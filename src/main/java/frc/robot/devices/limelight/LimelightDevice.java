@@ -41,6 +41,10 @@ public class LimelightDevice {
         return m_Table.getEntry("ta").getDouble(0.0);
     }
 
+    public boolean isTargetFound() {
+        return m_Table.getEntry("tv").getDouble(0.0) == 1.0;
+    }
+
     public void setLedMode(LedMode ledMode) {
         m_Table.getEntry("ledMode").setNumber(ledMode.ordinal());
     }

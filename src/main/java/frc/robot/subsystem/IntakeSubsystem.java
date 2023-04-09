@@ -6,8 +6,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
+import frc.robot.Constants.VisionConstant.LimelightNames;
 import frc.robot.actions.autoActions.scoreCubes.InterpolateCubeTable;
 import frc.robot.actions.autoActions.scoreCubes.CubeScoringTable.CubeScoringTableRow;
+import frc.robot.devices.GlobalSubsystemDevices;
+import frc.robot.devices.limelight.LimelightDevice;
 
 public class IntakeSubsystem {
     private final CANSparkMax m_IntakeAimingMotor = new CANSparkMax(0, MotorType.kBrushless);
@@ -19,12 +22,21 @@ public class IntakeSubsystem {
     private RelativeEncoder m_IntakeAimingEncoder;
     private PIDController m_IntakeAimingPID;
 
+    private LimelightDevice m_LimelightDevice;
+    private double m_IntakeDisiredAngle;
+
     public enum IntakeHardware {
         INTAKE_AIMING_MOTOR,
         LEFT_FRONT_MOTOR,
         LEFT_REAR_MOTOR,
         RIGHT_FRONT_MOTOR,
         RIGHT_REAR_MOTOR,
+    }
+
+    public enum ReachableRows {
+        TOP_ROW,
+        MIDDLE_ROW,
+        NONE
     }
 
     public IntakeSubsystem() {
@@ -36,6 +48,8 @@ public class IntakeSubsystem {
 
         m_IntakeAimingEncoder = m_IntakeAimingMotor.getEncoder();
         m_IntakeAimingPID.reset();
+
+        m_LimelightDevice = GlobalSubsystemDevices.getLimelightDevice()[LimelightNames.LIMELIGHT_INTAKE.ordinal()];
     }
 
     public MotorController getMotorController(IntakeHardware hardware) {
@@ -53,6 +67,10 @@ public class IntakeSubsystem {
             default:
                 return null;
         }
+    }
+
+    private Double getDistanceToTarget() {
+        return m_LimelightDevice.getAprilTagDistance();
     }
 
     public RelativeEncoder getEncoder() {
@@ -74,10 +92,22 @@ public class IntakeSubsystem {
     }
 
     public void setIntakeMotorDegrees(Double degrees) {
-        m_IntakeAimingMotor.set(m_IntakeAimingPID.calculate(m_IntakeAimingEncoder.getPosition(), degrees)); // TO DO
+        // TODO: Interpolate the degrees from the encoder position
+        m_IntakeAimingMotor.set(m_IntakeAimingPID.calculate(m_IntakeAimingEncoder.getPosition(), degrees));
     }
 
-    public double getAngleForScoring(Double distance, CubeScoringTableRow row) {
-        return InterpolateCubeTable.interpolate(distance, row);
+    public double getAngleForScoring(CubeScoringTableRow row) {
+        return InterpolateCubeTable.interpolate(getDistanceToTarget(), row);
+    }
+
+    // TODO: Improve range of angles and add them to constants
+    public ReachableRows getReachableRows() {
+        if (m_LimelightDevice.isTargetFound() && (m_IntakeDisiredAngle < 40 && m_IntakeDisiredAngle > 10)) {
+            return ReachableRows.MIDDLE_ROW;
+        } else if (m_LimelightDevice.isTargetFound() && (m_IntakeDisiredAngle < 70 && m_IntakeDisiredAngle > 40)) {
+            return ReachableRows.TOP_ROW;
+        } else {
+            return ReachableRows.NONE;
+        }
     }
 }
