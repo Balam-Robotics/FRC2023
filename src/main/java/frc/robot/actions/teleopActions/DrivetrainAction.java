@@ -1,9 +1,9 @@
-package frc.robot.actions;
+package frc.robot.actions.teleopActions;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.hardware.GlobalSubsystemHardware;
 import frc.robot.subsystem.DrivetrainSubsystem;
-import frc.robot.subsystem.GlobalSubsystemHardware;
 
 public class DrivetrainAction {
     private final XboxController m_XboxController;

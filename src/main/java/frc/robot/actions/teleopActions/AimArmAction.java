@@ -1,8 +1,8 @@
-package frc.robot.actions;
+package frc.robot.actions.teleopActions;
 
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.hardware.GlobalSubsystemHardware;
 import frc.robot.subsystem.ArmSubsystem;
-import frc.robot.subsystem.GlobalSubsystemHardware;
 import frc.robot.subsystem.ArmSubsystem.ArmHardware;
 
 public class AimArmAction {

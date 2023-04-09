@@ -2,14 +2,15 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.actions.AimArmAction;
-import frc.robot.actions.DrivetrainAction;
-import frc.robot.actions.ExtendForearmAction;
-import frc.robot.actions.HandleClawAction;
+import frc.robot.actions.teleopActions.AimArmAction;
+import frc.robot.actions.teleopActions.DrivetrainAction;
+import frc.robot.actions.teleopActions.ExtendForearmAction;
+import frc.robot.actions.teleopActions.HandleClawAction;
+import frc.robot.hardware.GlobalSubsystemHardware;
+import frc.robot.hardware.LimelightHardware;
 import frc.robot.subsystem.ArmSubsystem;
 import frc.robot.subsystem.ClawSubsystem;
 import frc.robot.subsystem.DrivetrainSubsystem;
-import frc.robot.subsystem.GlobalSubsystemHardware;
 
 public class Robot extends TimedRobot {
   // Actions
@@ -21,6 +22,10 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     GlobalSubsystemHardware.setXboxController(new XboxController(Constants.OperatorConstants.kDriverControllerPort));
+    GlobalSubsystemHardware.setLimelightHardware(new LimelightHardware[] {
+        new LimelightHardware("limelight-intake"),
+        new LimelightHardware("limelight-arm")
+    });
   }
 
   @Override

@@ -42,7 +42,13 @@ public final class Constants {
         public static final int kForearmPIDkD = 0;
     }
 
-    public static class VisionConstants {
-        public static final String kLimelightKey = "limelight-balam";
+    public static class VisionConstant {
+        public static final String kLimelightIntake = "limelight-intake";
+        public static final String kLimelightArm = "limelight-arm";
+
+        public static enum LimelightNames {
+            LIMELIGHT_INTAKE,
+            LIMELIGHT_ARM
+        }
     }
 }
