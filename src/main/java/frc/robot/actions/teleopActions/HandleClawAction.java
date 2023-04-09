@@ -2,7 +2,7 @@ package frc.robot.actions.teleopActions;
 
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.ClawConstants;
-import frc.robot.hardware.GlobalSubsystemHardware;
+import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.subsystem.ClawSubsystem;
 import frc.robot.subsystem.ClawSubsystem.ClawHardware;
 
@@ -11,7 +11,7 @@ public class HandleClawAction {
     private final ClawSubsystem m_ClawSubsystem;
 
     public HandleClawAction(ClawSubsystem clawSubsystem) {
-        m_XboxController = GlobalSubsystemHardware.getXboxController();
+        m_XboxController = GlobalSubsystemDevices.getXboxController();
         m_ClawSubsystem = clawSubsystem;
     }
 

@@ -6,8 +6,9 @@ import frc.robot.actions.teleopActions.AimArmAction;
 import frc.robot.actions.teleopActions.DrivetrainAction;
 import frc.robot.actions.teleopActions.ExtendForearmAction;
 import frc.robot.actions.teleopActions.HandleClawAction;
-import frc.robot.hardware.GlobalSubsystemHardware;
-import frc.robot.hardware.LimelightHardware;
+import frc.robot.devices.GlobalSubsystemDevices;
+import frc.robot.devices.limelight.LimelightDevice;
+import frc.robot.devices.limelight.LimelightPhysicalProperties;
 import frc.robot.subsystem.ArmSubsystem;
 import frc.robot.subsystem.ClawSubsystem;
 import frc.robot.subsystem.DrivetrainSubsystem;
@@ -21,10 +22,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    GlobalSubsystemHardware.setXboxController(new XboxController(Constants.OperatorConstants.kDriverControllerPort));
-    GlobalSubsystemHardware.setLimelightHardware(new LimelightHardware[] {
-        new LimelightHardware("limelight-intake"),
-        new LimelightHardware("limelight-arm")
+    GlobalSubsystemDevices.setXboxController(new XboxController(Constants.OperatorConstants.kDriverControllerPort));
+    GlobalSubsystemDevices.setLimelightDevice(new LimelightDevice[] {
+        new LimelightDevice("limelight-intake", new LimelightPhysicalProperties(0, 0, 0)),
+        new LimelightDevice("limelight-arm", new LimelightPhysicalProperties(0, 0, 0))
     });
   }
 

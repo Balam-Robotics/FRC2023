@@ -1,10 +1,11 @@
-package frc.robot.hardware;
+package frc.robot.devices.limelight;
 
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
-public class LimelightHardware {
+public class LimelightDevice {
     private final NetworkTable m_Table;
+    private final LimelightPhysicalProperties m_LimelightPhysicalProperties;
 
     public enum LedMode {
         CURRENT_PIPELINE_MODE,
@@ -23,8 +24,9 @@ public class LimelightHardware {
         REFLECTIVE,
     }
 
-    public LimelightHardware(String limelightTableName) {
+    public LimelightDevice(String limelightTableName, LimelightPhysicalProperties limelightPhysicalProperties) {
         m_Table = NetworkTableInstance.getDefault().getTable(limelightTableName);
+        m_LimelightPhysicalProperties = limelightPhysicalProperties;
     }
 
     public double getTargetX() {
@@ -49,5 +51,14 @@ public class LimelightHardware {
 
     public void setPipeline(Pipeline pipeline) {
         m_Table.getEntry("pipeline").setNumber(pipeline.ordinal());
+    }
+
+    // Utility functions
+    public double getAprilTagDistance() {
+        double angleToGoalDegrees = m_LimelightPhysicalProperties.getM_LimelightAngle() + getTargetY();
+        double angleToGoalRadians = angleToGoalDegrees * (Math.PI / 180.0);
+        return (m_LimelightPhysicalProperties.getM_AprilTagHeight()
+                - m_LimelightPhysicalProperties.getM_LimelightLensHeight())
+                / Math.tan(angleToGoalRadians);
     }
 }

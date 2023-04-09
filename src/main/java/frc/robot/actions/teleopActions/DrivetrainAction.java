@@ -2,7 +2,7 @@ package frc.robot.actions.teleopActions;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.hardware.GlobalSubsystemHardware;
+import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.subsystem.DrivetrainSubsystem;
 
 public class DrivetrainAction {
@@ -11,7 +11,7 @@ public class DrivetrainAction {
     private final DifferentialDrive m_DifferentialDrive;
 
     public DrivetrainAction(DrivetrainSubsystem drivetrainSubsystem) {
-        m_XboxController = GlobalSubsystemHardware.getXboxController();
+        m_XboxController = GlobalSubsystemDevices.getXboxController();
         m_DrivetrainSubsystem = drivetrainSubsystem;
         m_DifferentialDrive = m_DrivetrainSubsystem.getDifferentialDrive();
     }

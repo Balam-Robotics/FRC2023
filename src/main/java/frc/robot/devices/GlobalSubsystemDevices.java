@@ -1,10 +1,11 @@
-package frc.robot.hardware;
+package frc.robot.devices;
 
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.devices.limelight.LimelightDevice;
 
-public class GlobalSubsystemHardware {
+public class GlobalSubsystemDevices {
     private static XboxController m_XboxController;
-    private static LimelightHardware[] m_LimelightHardware;
+    private static LimelightDevice[] m_LimelightHardware;
 
     // XBOX CONTROLLER
     public static void setXboxController(XboxController xboxController) {
@@ -16,11 +17,11 @@ public class GlobalSubsystemHardware {
     }
 
     // LIMELIGHT
-    public static void setLimelightHardware(LimelightHardware[] limelightHardware) {
-        m_LimelightHardware = limelightHardware;
+    public static void setLimelightDevice(LimelightDevice[] limelightDevice) {
+        m_LimelightHardware = limelightDevice;
     }
 
-    public static LimelightHardware[] getLimelightHardware() {
+    public static LimelightDevice[] getLimelightDevice() {
         return m_LimelightHardware;
     }
 }
