@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.actions.autoActions.AimIntakeAction;
 import frc.robot.actions.teleopActions.AimArmAction;
 import frc.robot.actions.teleopActions.DrivetrainAction;
 import frc.robot.actions.teleopActions.ExtendForearmAction;
@@ -12,6 +13,7 @@ import frc.robot.devices.limelight.LimelightPhysicalProperties;
 import frc.robot.subsystem.ArmSubsystem;
 import frc.robot.subsystem.ClawSubsystem;
 import frc.robot.subsystem.DrivetrainSubsystem;
+import frc.robot.subsystem.IntakeSubsystem;
 
 public class Robot extends TimedRobot {
   // Actions
@@ -19,6 +21,7 @@ public class Robot extends TimedRobot {
   private final AimArmAction m_AimArmAction = new AimArmAction(new ArmSubsystem());
   private final HandleClawAction m_HandleClawAction = new HandleClawAction(new ClawSubsystem());
   private final DrivetrainAction m_DrivetrainAction = new DrivetrainAction(new DrivetrainSubsystem());
+  private final AimIntakeAction m_AimIntakeAction = new AimIntakeAction(new IntakeSubsystem());
 
   @Override
   public void robotInit() {
@@ -39,6 +42,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+    m_AimIntakeAction.execute();
   }
 
   @Override
@@ -51,6 +55,7 @@ public class Robot extends TimedRobot {
     m_ExtendForearmAction.execute();
     m_HandleClawAction.execute();
     m_DrivetrainAction.execute();
+    m_AimIntakeAction.execute();
   }
 
   @Override

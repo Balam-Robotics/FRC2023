@@ -2,7 +2,6 @@ package frc.robot.actions.teleopActions;
 
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.ClawConstants;
-import frc.robot.Constants.VisionConstant.LimelightNames;
 import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.subsystem.ClawSubsystem;
 import frc.robot.subsystem.ClawSubsystem.ClawHardware;
