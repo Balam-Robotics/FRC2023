@@ -7,8 +7,8 @@ import frc.robot.subsystem.GlobalSubsystemHardware;
 import frc.robot.subsystem.ClawSubsystem.ClawHardware;
 
 public class HandleClawAction {
-    XboxController m_XboxController;
-    ClawSubsystem m_ClawSubsystem;
+    private final XboxController m_XboxController;
+    private final ClawSubsystem m_ClawSubsystem;
 
     public HandleClawAction(ClawSubsystem clawSubsystem) {
         m_XboxController = GlobalSubsystemHardware.getXboxController();

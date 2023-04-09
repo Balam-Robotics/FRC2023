@@ -6,8 +6,8 @@ import frc.robot.subsystem.GlobalSubsystemHardware;
 import frc.robot.subsystem.ArmSubsystem.ArmHardware;
 
 public class AimArmAction {
-    XboxController m_XboxController;
-    ArmSubsystem m_ArmSubsystem;
+    private final XboxController m_XboxController;
+    private final ArmSubsystem m_ArmSubsystem;
 
     public AimArmAction(ArmSubsystem armSubsystem) {
         m_XboxController = GlobalSubsystemHardware.getXboxController();
