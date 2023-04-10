@@ -1,7 +1,10 @@
 package frc.robot.utilities;
 
 public class Balamath {
-  public static double basicLerp(float a, float b, float t) {
-    return a + (b - a) * t;
+  public static double lerpEncoderPositionToDegrees(double currentPos, double minPos, double maxPos, double minAngle,
+      double maxAngle) {
+    double ratio = (currentPos - minPos) / (maxPos - minPos);
+    double angle = minAngle + ratio * (maxAngle - minAngle);
+    return angle;
   }
 }

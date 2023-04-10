@@ -3,7 +3,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.actions.autoActions.AutoAimIntakeAction;
 import frc.robot.actions.teleopActions.AimArmAction;
 import frc.robot.actions.teleopActions.AimIntakeAction;
 import frc.robot.actions.teleopActions.DrivetrainAction;
@@ -59,12 +58,13 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    GridScoringArray.getInstance().setFieldArray(new int[][] {
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // In Which colum is the robot in front of the grid
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // TOP ROW
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // MIDDLE ROW
-        { 0, 0, 0, 0, 0, 0, 0, 0, 0 } // BOTTOM ROW
-    });
+    // GridScoringArray.getInstance().setFieldArray(new int[][] {
+    // { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // In Which colum is the robot in front of the
+    // grid
+    // { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // TOP ROW
+    // { 0, 0, 0, 0, 0, 0, 0, 0, 0 }, // MIDDLE ROW
+    // { 0, 0, 0, 0, 0, 0, 0, 0, 0 } // BOTTOM ROW
+    // });
   }
 
   @Override
@@ -74,12 +74,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    GridScoringArray.getInstance().setFieldArray(new int[][] {
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0 }, // In Which colum is the robot in front of the grid
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0 }, // TOP ROW
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0 }, // MIDDLE ROW
-        { 1, 0, 0, 0, 0, 0, 0, 0, 0 } // BOTTOM ROW
-    });
+
   }
 
   @Override
