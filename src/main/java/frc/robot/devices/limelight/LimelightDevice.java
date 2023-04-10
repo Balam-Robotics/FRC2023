@@ -41,6 +41,10 @@ public class LimelightDevice {
         return m_Table.getEntry("ta").getDouble(0.0);
     }
 
+    public double getCurrentAprilTagId() {
+        return m_Table.getEntry("tid").getDoubleArray(new double[1])[0]; //FIXME: This is a hack that may not work, further testing is needed
+    }
+
     public boolean isTargetFound() {
         return m_Table.getEntry("tv").getDouble(0.0) == 1.0;
     }

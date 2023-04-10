@@ -5,7 +5,7 @@ import frc.robot.devices.limelight.LimelightDevice;
 
 public class GlobalSubsystemDevices {
     private static XboxController m_XboxController;
-    private static LimelightDevice[] m_LimelightHardware;
+    private static LimelightDevice[] m_LimelightDevice;
 
     // XBOX CONTROLLER
     public static void setXboxController(XboxController xboxController) {
@@ -18,10 +18,10 @@ public class GlobalSubsystemDevices {
 
     // LIMELIGHT
     public static void setLimelightDevice(LimelightDevice[] limelightDevice) {
-        m_LimelightHardware = limelightDevice;
+        m_LimelightDevice = limelightDevice;
     }
 
     public static LimelightDevice[] getLimelightDevice() {
-        return m_LimelightHardware;
+        return m_LimelightDevice;
     }
 }

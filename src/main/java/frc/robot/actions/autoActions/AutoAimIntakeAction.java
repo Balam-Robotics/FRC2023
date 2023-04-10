@@ -9,7 +9,7 @@ public class AutoAimIntakeAction {
 
     public AutoAimIntakeAction(IntakeSubsystem intakeSubsystem) {
         m_IntakeSubsystem = intakeSubsystem;
-        m_IntakeSubsystem.resetEncoder(m_IntakeSubsystem.getEncoder(), 0.0);
+        //m_IntakeSubsystem.resetEncoder(m_IntakeSubsystem.getEncoder(), 0.0);
         m_IntakeSubsystem.setPID(null, null, null); // TODO: Set PID values
     }
 

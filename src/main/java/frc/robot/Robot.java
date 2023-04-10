@@ -11,18 +11,24 @@ import frc.robot.actions.teleopActions.HandleClawAction;
 import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.devices.limelight.LimelightDevice;
 import frc.robot.devices.limelight.LimelightPhysicalProperties;
+import frc.robot.shuffleboard.UpdateBoards;
 import frc.robot.subsystem.ArmSubsystem;
 import frc.robot.subsystem.ClawSubsystem;
 import frc.robot.subsystem.DrivetrainSubsystem;
 import frc.robot.subsystem.IntakeSubsystem;
 
 public class Robot extends TimedRobot {
+  private ArmSubsystem m_ArmSubsystem;
+  private ClawSubsystem m_ClawSubsystem;
+  private DrivetrainSubsystem m_DrivetrainSubsystem;
+  //private IntakeSubsystem m_IntakeSubsystem;
+  
   // Actions
-  private final ExtendForearmAction m_ExtendForearmAction = new ExtendForearmAction(new ArmSubsystem());
-  private final AimArmAction m_AimArmAction = new AimArmAction(new ArmSubsystem());
-  private final HandleClawAction m_HandleClawAction = new HandleClawAction(new ClawSubsystem());
-  private final DrivetrainAction m_DrivetrainAction = new DrivetrainAction(new DrivetrainSubsystem());
-  private final AutoAimIntakeAction m_AimIntakeAction = new AutoAimIntakeAction(new IntakeSubsystem());
+  private ExtendForearmAction m_ExtendForearmAction;
+  private HandleClawAction m_HandleClawAction;
+  private DrivetrainAction m_DrivetrainAction;
+  //private AutoAimIntakeAction m_AimIntakeAction;
+  private AimArmAction m_AimArmAction;
 
   @Override
   public void robotInit() {
@@ -31,6 +37,17 @@ public class Robot extends TimedRobot {
         new LimelightDevice("limelight-intake", new LimelightPhysicalProperties(0, 0, 0)),
         new LimelightDevice("limelight-arm", new LimelightPhysicalProperties(0, 0, 0))
     });
+
+    m_ArmSubsystem = new ArmSubsystem();
+    m_ClawSubsystem = new ClawSubsystem();
+    m_DrivetrainSubsystem = new DrivetrainSubsystem();
+    //m_IntakeSubsystem = new IntakeSubsystem();
+
+    m_ExtendForearmAction = new ExtendForearmAction(m_ArmSubsystem);
+    m_HandleClawAction = new HandleClawAction(m_ClawSubsystem);
+    m_DrivetrainAction = new DrivetrainAction(m_DrivetrainSubsystem);
+    //m_AimIntakeAction = new AutoAimIntakeAction(m_IntakeSubsystem);
+    m_AimArmAction = new AimArmAction(m_ArmSubsystem);
   }
 
   @Override
@@ -43,7 +60,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
-    m_AimIntakeAction.execute();
+    //m_AimIntakeAction.execute();
   }
 
   @Override
@@ -56,7 +73,7 @@ public class Robot extends TimedRobot {
     m_ExtendForearmAction.execute();
     m_HandleClawAction.execute();
     m_DrivetrainAction.execute();
-    m_AimIntakeAction.execute();
+    //m_AimIntakeAction.execute();
   }
 
   @Override
@@ -73,6 +90,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void testPeriodic() {
+    UpdateBoards.update();
   }
 
   @Override

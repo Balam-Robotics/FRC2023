@@ -13,7 +13,7 @@ public class AimIntakeAction {
     public AimIntakeAction(IntakeSubsystem intakeSubsystem) {
         m_XboxController = GlobalSubsystemDevices.getXboxController();
         m_IntakeSubsystem = intakeSubsystem;
-        m_IntakeSubsystem.resetEncoder(m_IntakeSubsystem.getEncoder(), 0.0);
+        //m_IntakeSubsystem.resetEncoder(m_IntakeSubsystem.getEncoder(), 0.0);
         m_IntakeSubsystem.setPID(null, null, null); // TODO: Set PID values
     }
 

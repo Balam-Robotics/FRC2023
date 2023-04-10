@@ -6,6 +6,7 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.motorcontrol.MotorController;
+import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.VisionConstant.LimelightNames;
 import frc.robot.actions.autoActions.scoreCubes.InterpolateCubeTable;
 import frc.robot.actions.autoActions.scoreCubes.CubeScoringTable.CubeScoringTableRow;
@@ -13,14 +14,14 @@ import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.devices.limelight.LimelightDevice;
 
 public class IntakeSubsystem {
-    private final CANSparkMax m_IntakeAimingMotor = new CANSparkMax(0, MotorType.kBrushless);
-    private final CANSparkMax m_LeftFrontMotor = new CANSparkMax(0, MotorType.kBrushless);
-    private final CANSparkMax m_LeftRearMotor = new CANSparkMax(0, MotorType.kBrushless);
-    private final CANSparkMax m_RightFrontMotor = new CANSparkMax(0, MotorType.kBrushless);
-    private final CANSparkMax m_RightRearMotor = new CANSparkMax(0, MotorType.kBrushless);
+    private final CANSparkMax m_IntakeAimingMotor = new CANSparkMax(IntakeConstants.kIntakeAimingMotorCANId, MotorType.kBrushless);
+    private final CANSparkMax m_LeftFrontMotor = new CANSparkMax(IntakeConstants.kLeftFrontMotorCANId, MotorType.kBrushless);
+    private final CANSparkMax m_LeftRearMotor = new CANSparkMax(IntakeConstants.kLeftRearMotorCANId, MotorType.kBrushless);
+    private final CANSparkMax m_RightFrontMotor = new CANSparkMax(IntakeConstants.kRightFrontMotorCANId, MotorType.kBrushless);
+    private final CANSparkMax m_RightRearMotor = new CANSparkMax(IntakeConstants.kRightRearMotorCANId, MotorType.kBrushless);
 
     private RelativeEncoder m_IntakeAimingEncoder;
-    private PIDController m_IntakeAimingPID;
+    private PIDController m_IntakeAimingPID = new PIDController(IntakeConstants.kIntakePIDkP, IntakeConstants.kIntakePIDkD, IntakeConstants.kIntakePIDkI);;
 
     private LimelightDevice m_LimelightDevice;
     private double m_IntakeDisiredAngle;
@@ -47,9 +48,10 @@ public class IntakeSubsystem {
         m_RightRearMotor.restoreFactoryDefaults();
 
         m_IntakeAimingEncoder = m_IntakeAimingMotor.getEncoder();
-        m_IntakeAimingPID.reset();
+        //m_IntakeAimingPID.reset();
 
-        m_LimelightDevice = GlobalSubsystemDevices.getLimelightDevice()[LimelightNames.LIMELIGHT_INTAKE.ordinal()];
+        //m_LimelightDevice = GlobalSubsystemDevices.getLimelightDevice()[LimelightNames.LIMELIGHT_INTAKE.ordinal()];
+        m_LimelightDevice = GlobalSubsystemDevices.getLimelightDevice()[1];
     }
 
     public MotorController getMotorController(IntakeHardware hardware) {
@@ -77,23 +79,15 @@ public class IntakeSubsystem {
         return m_IntakeAimingEncoder;
     }
 
-    public void resetEncoder(RelativeEncoder encoder, Double position) {
-        encoder.setPosition(position);
-    }
-
     public void setPID(Double kP, Double kI, Double kD) {
         m_IntakeAimingPID.setP(kP);
         m_IntakeAimingPID.setI(kI);
         m_IntakeAimingPID.setD(kD);
     }
 
-    public void resetPID() {
-        m_IntakeAimingPID.reset();
-    }
-
     public void setIntakeMotorDegrees(Double degrees) {
         // TODO: Interpolate the degrees from the encoder position
-        m_IntakeAimingMotor.set(m_IntakeAimingPID.calculate(m_IntakeAimingEncoder.getPosition(), degrees));
+        //m_IntakeAimingMotor.set(m_IntakeAimingPID.calculate(m_IntakeAimingEncoder.getPosition(), degrees));
     }
 
     public double getAngleForScoring(CubeScoringTableRow row) {
