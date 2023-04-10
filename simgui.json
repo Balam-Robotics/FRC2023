@@ -1,27 +1,34 @@
 {
-  "HALProvider": {
-    "Other Devices": {
-      "SPARK MAX [16]": {
-        "header": {
-          "open": true
-        }
-      }
-    }
-  },
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
       "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
+      "/LiveWindow/Ungrouped/PIDController[1]": "PIDController",
       "/LiveWindow/Ungrouped/Talon SRX [14]": "Motor Controller",
       "/LiveWindow/Ungrouped/Talon SRX [15]": "Motor Controller"
     }
   },
   "NetworkTables": {
+    "FMSInfo": {
+      "open": true
+    },
     "Persistent Values": {
       "open": false
     },
-    "Retained Values": {
-      "open": false
+    "Shuffleboard": {
+      "Scoring Board": {
+        "open": true
+      },
+      "open": true
+    },
+    "SmartDashboard": {
+      "open": true
+    },
+    "combined": true,
+    "transitory": {
+      "Shuffleboard": {
+        "open": true
+      }
     }
   }
 }

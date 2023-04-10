@@ -48,10 +48,7 @@ public class IntakeSubsystem {
         m_RightRearMotor.restoreFactoryDefaults();
 
         m_IntakeAimingEncoder = m_IntakeAimingMotor.getEncoder();
-        //m_IntakeAimingPID.reset();
-
-        //m_LimelightDevice = GlobalSubsystemDevices.getLimelightDevice()[LimelightNames.LIMELIGHT_INTAKE.ordinal()];
-        m_LimelightDevice = GlobalSubsystemDevices.getLimelightDevice()[1];
+        m_LimelightDevice = GlobalSubsystemDevices.getLimelightDevice()[LimelightNames.LIMELIGHT_INTAKE.ordinal()];
     }
 
     public MotorController getMotorController(IntakeHardware hardware) {
@@ -79,15 +76,9 @@ public class IntakeSubsystem {
         return m_IntakeAimingEncoder;
     }
 
-    public void setPID(Double kP, Double kI, Double kD) {
-        m_IntakeAimingPID.setP(kP);
-        m_IntakeAimingPID.setI(kI);
-        m_IntakeAimingPID.setD(kD);
-    }
-
     public void setIntakeMotorDegrees(Double degrees) {
         // TODO: Interpolate the degrees from the encoder position
-        //m_IntakeAimingMotor.set(m_IntakeAimingPID.calculate(m_IntakeAimingEncoder.getPosition(), degrees));
+        m_IntakeAimingMotor.set(m_IntakeAimingPID.calculate(m_IntakeAimingEncoder.getPosition(), degrees));
     }
 
     public double getAngleForScoring(CubeScoringTableRow row) {

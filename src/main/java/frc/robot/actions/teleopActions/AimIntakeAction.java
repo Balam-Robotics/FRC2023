@@ -1,6 +1,7 @@
 package frc.robot.actions.teleopActions;
 
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.actions.autoActions.scoreCubes.CubeScoringTable.CubeScoringTableRow;
 import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.subsystem.IntakeSubsystem;
@@ -13,8 +14,6 @@ public class AimIntakeAction {
     public AimIntakeAction(IntakeSubsystem intakeSubsystem) {
         m_XboxController = GlobalSubsystemDevices.getXboxController();
         m_IntakeSubsystem = intakeSubsystem;
-        //m_IntakeSubsystem.resetEncoder(m_IntakeSubsystem.getEncoder(), 0.0);
-        m_IntakeSubsystem.setPID(null, null, null); // TODO: Set PID values
     }
 
     // TODO: Check xbox controller buttons mapping
@@ -31,5 +30,7 @@ public class AimIntakeAction {
             m_IntakeSubsystem.setIntakeMotorDegrees(0.0);
             // TODO: Add feedback to shuffleboard
         }
+
+        SmartDashboard.putNumber("Limelight", m_IntakeSubsystem.getAngleForScoring(CubeScoringTableRow.TOP_ROW));
     }
 }
