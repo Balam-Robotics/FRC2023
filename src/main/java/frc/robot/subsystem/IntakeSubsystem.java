@@ -78,7 +78,7 @@ public class IntakeSubsystem {
     }
 
     public double getIntakeDegrees() {
-        return Balamath.lerpEncoderPositionToDegrees(m_IntakeAimingEncoder.getPosition(),
+        return Balamath.lerpEncoderPositionToDesiredUnit(m_IntakeAimingEncoder.getPosition(),
                 IntakeConstants.kIntakeEncoderMinPosition, IntakeConstants.kIntakeEncoderMaxPosition,
                 IntakeConstants.kIntakeEncoderMinAngle, IntakeConstants.kIntakeEncoderMaxAngle);
     }

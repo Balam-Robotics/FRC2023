@@ -15,7 +15,7 @@ public class AimArmAction {
     }
 
     public void execute() {
-        m_ArmSubsystem.getMotorController(ArmHardware.ARM_MOTOR).set(-m_XboxController.getLeftTriggerAxis());
-        m_ArmSubsystem.getMotorController(ArmHardware.ARM_MOTOR).set(m_XboxController.getRightTriggerAxis());
+        // m_ArmSubsystem.getMotorController(ArmHardware.ARM_MOTOR).set(-m_XboxController.getLeftTriggerAxis());
+        m_ArmSubsystem.getMotorController(ArmHardware.ARM_MOTOR).set(-m_XboxController.getRightTriggerAxis());
     }
 }

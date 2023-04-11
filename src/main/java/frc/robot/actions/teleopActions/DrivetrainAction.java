@@ -17,6 +17,6 @@ public class DrivetrainAction {
     }
 
     public void execute() {
-        m_DifferentialDrive.arcadeDrive(m_XboxController.getLeftY(), m_XboxController.getRightX());
+        m_DifferentialDrive.arcadeDrive(m_XboxController.getRightX(), m_XboxController.getLeftY());
     }
 }

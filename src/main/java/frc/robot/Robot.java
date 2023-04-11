@@ -11,7 +11,6 @@ import frc.robot.actions.teleopActions.HandleClawAction;
 import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.devices.limelight.LimelightDevice;
 import frc.robot.devices.limelight.LimelightPhysicalProperties;
-import frc.robot.shuffleboard.GridScoringArray;
 import frc.robot.shuffleboard.UpdateBoards;
 import frc.robot.subsystem.ArmSubsystem;
 import frc.robot.subsystem.ClawSubsystem;

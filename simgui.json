@@ -17,6 +17,9 @@
     },
     "Shuffleboard": {
       "Scoring Board": {
+        "Column 7": {
+          "open": true
+        },
         "open": true
       },
       "open": true

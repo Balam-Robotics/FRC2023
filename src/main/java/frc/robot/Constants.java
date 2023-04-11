@@ -13,11 +13,11 @@ public final class Constants {
     }
 
     public static class IntakeConstants {
-        public static final int kIntakeRightMotorCANId = 5;
-        public static final int kIntakeLeftMotorCANId = 6;
-        public static final int kIntakeAimMotorCANId = 7;
+        public static final int kIntakeRightMotorCANId = 50;
+        public static final int kIntakeLeftMotorCANId = 60;
+        public static final int kIntakeAimMotorCANId = 70;
 
-        public static final int kIntakeAimingMotorCANId = 8;
+        public static final int kIntakeAimingMotorCANId = 80;
         public static final int kLeftFrontMotorCANId = 9;
         public static final int kLeftRearMotorCANId = 10;
         public static final int kRightFrontMotorCANId = 11;
@@ -36,14 +36,14 @@ public final class Constants {
     }
 
     public static class ClawConstants {
-        public static final int kClawLeftMotorCANId = 13;
-        public static final int kClawRightMotorCANId = 14;
+        public static final int kClawLeftMotorCANId = 7;
+        public static final int kClawRightMotorCANId = 8;
         public static final double kClawSpeed = 0.5;
     }
 
     public static class ArmConstants {
-        public static final int kArmMotorCANId = 15;
-        public static final int kForearmMotorCANId = 16;
+        public static final int kArmMotorCANId = 5;
+        public static final int kForearmMotorCANId = 6;
 
         public static final int kArmMotorEncoderPortA = 0;
         public static final int kArmMotorEncoderPortB = 0;
