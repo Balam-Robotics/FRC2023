@@ -28,7 +28,5 @@ public class ExtendForearmAction {
     }
 
     m_ArmSubsystem.setForearmMotorPosition(m_desiredPosition);
-
-    System.out.println(m_desiredPosition);
   }
 }

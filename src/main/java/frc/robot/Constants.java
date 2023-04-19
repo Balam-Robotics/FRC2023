@@ -38,7 +38,7 @@ public final class Constants {
     public static class ClawConstants {
         public static final int kClawLeftMotorCANId = 7;
         public static final int kClawRightMotorCANId = 8;
-        public static final double kClawSpeed = 0.5;
+        public static final double kClawSpeed = 1;
     }
 
     public static class ArmConstants {
@@ -46,7 +46,7 @@ public final class Constants {
         public static final int kForearmMotorCANId = 6;
 
         public static final int kArmMotorEncoderPortA = 0;
-        public static final int kArmMotorEncoderPortB = 0;
+        public static final int kArmMotorEncoderPortB = 1;
 
         public static final double kForearmExtensionSpeed = 0.2;
 
