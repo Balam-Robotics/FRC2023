@@ -30,9 +30,9 @@ public class ArmSubsystem {
     public ArmSubsystem() {
         m_ArmMotor.configFactoryDefault();
         m_ForearmMotor.restoreFactoryDefaults();
-        m_ForearmEncoder.setPosition(0.0);
         m_ArmEncoder = new Encoder(ArmConstants.kArmMotorEncoderPortA, ArmConstants.kArmMotorEncoderPortB);
         m_ArmEncoder.setDistancePerPulse(1.0 / 6);
+        m_ForearmEncoder.setPosition(0.0);
         m_ArmEncoder.reset();
     }
 

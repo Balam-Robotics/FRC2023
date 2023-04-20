@@ -18,10 +18,10 @@ public class HandleClawAction {
     public void execute() {
         if (m_XboxController.getYButton()) {
             m_ClawSubsystem.getMotorController(ClawHardware.CLAW_LEFT_MOTOR).set(-ClawConstants.kClawSpeed);
-            m_ClawSubsystem.getMotorController(ClawHardware.CLAW_RIGHT_MOTOR).set(-ClawConstants.kClawSpeed);
-        } else if (m_XboxController.getAButton()) {
-            m_ClawSubsystem.getMotorController(ClawHardware.CLAW_LEFT_MOTOR).set(ClawConstants.kClawSpeed);
             m_ClawSubsystem.getMotorController(ClawHardware.CLAW_RIGHT_MOTOR).set(ClawConstants.kClawSpeed);
+        } else if (m_XboxController.getXButton()) {
+            m_ClawSubsystem.getMotorController(ClawHardware.CLAW_LEFT_MOTOR).set(ClawConstants.kClawSpeed);
+            m_ClawSubsystem.getMotorController(ClawHardware.CLAW_RIGHT_MOTOR).set(-ClawConstants.kClawSpeed);
         } else {
             m_ClawSubsystem.getMotorController(ClawHardware.CLAW_LEFT_MOTOR).set(0);
             m_ClawSubsystem.getMotorController(ClawHardware.CLAW_RIGHT_MOTOR).set(0);

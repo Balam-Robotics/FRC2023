@@ -1,6 +1,5 @@
 package frc.robot.subsystem;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -10,7 +9,8 @@ import frc.robot.Constants;
 public class ClawSubsystem {
     private final CANSparkMax m_ClawLeftMotor = new CANSparkMax(Constants.ClawConstants.kClawLeftMotorCANId,
             MotorType.kBrushless);
-    private final WPI_TalonSRX m_ClawRightMotor = new WPI_TalonSRX(Constants.ClawConstants.kClawRightMotorCANId);
+    private final CANSparkMax m_ClawRightMotor = new CANSparkMax(Constants.ClawConstants.kClawRightMotorCANId,
+            MotorType.kBrushless);
 
     public enum ClawHardware {
         CLAW_LEFT_MOTOR,
@@ -19,7 +19,7 @@ public class ClawSubsystem {
 
     public ClawSubsystem() {
         m_ClawLeftMotor.restoreFactoryDefaults();
-        m_ClawRightMotor.configFactoryDefault();
+        m_ClawRightMotor.restoreFactoryDefaults();
     }
 
     public MotorController getMotorController(ClawHardware hardware) {

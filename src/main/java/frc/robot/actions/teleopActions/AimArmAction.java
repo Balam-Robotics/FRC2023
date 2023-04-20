@@ -3,6 +3,7 @@ package frc.robot.actions.teleopActions;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.devices.GlobalSubsystemDevices;
 import frc.robot.subsystem.ArmSubsystem;
+import frc.robot.subsystem.ArmSubsystem.ArmHardware;
 
 public class AimArmAction {
     private final XboxController m_XboxController;
@@ -33,6 +34,8 @@ public class AimArmAction {
         }
 
         m_ArmSubsystem.setArmMotorAngle(m_DesiredAngle);
+
+        // m_ArmSubsystem.getMotorController(ArmHardware.ARM_MOTOR).set(1);
 
         System.out.println("Valor control: " + m_DesiredAngle + " | Valor encoder grados: "
                 + m_ArmSubsystem.getArmEncoderPosition());

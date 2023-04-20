@@ -13,15 +13,11 @@ public final class Constants {
     }
 
     public static class IntakeConstants {
-        public static final int kIntakeRightMotorCANId = 50;
-        public static final int kIntakeLeftMotorCANId = 60;
-        public static final int kIntakeAimMotorCANId = 70;
-
-        public static final int kIntakeAimingMotorCANId = 80;
-        public static final int kLeftFrontMotorCANId = 9;
-        public static final int kLeftRearMotorCANId = 10;
-        public static final int kRightFrontMotorCANId = 11;
-        public static final int kRightRearMotorCANId = 12;
+        public static final int kIntakeAimingMotorCANId = 20;
+        public static final int kLeftFrontMotorCANId = 22;
+        public static final int kLeftRearMotorCANId = 21;
+        public static final int kRightFrontMotorCANId = 23;
+        public static final int kRightRearMotorCANId = 24;
 
         // TODO: Find the correct values for the PID
         public static final int kIntakePIDkP = 0;
